@@ -10,7 +10,7 @@
 from colorama import init, Fore
 import random
 import time
-# Remettre la couleur en mode normal (blanc) a chaque fin de print()
+# Remettre la couleur en mode normal (blanc) à chaque fin de print()
 init(autoreset=True)
 mode = 0
 #-------------------------------------------------------------------#
@@ -27,19 +27,19 @@ def grille_vide():
         input(Fore.WHITE + "Entrez le nombre de colonne : " + Fore.GREEN + "")), 1), 70)
     mode = int(
         input(Fore.WHITE + "Entrez le mode de jeu (1/2/3) : " + Fore.GREEN + ""))
-    # Creer la grille avec une liste de liste par comprehension
+    # Créer la grille avec une liste de listes par comprehension
     g = [[0]*c for i in range(l)]
     return g
 
 #----------------------------------------------------------#
 #------------ EXERCICE 2 ----------------------------------#
-#- DESCR : d'afficher la grille du jeu --------------------#
+#- DESCR : afficher la grille du jeu ----------------------#
 #----------------------------------------------------------#
 
 
 def afficher(g):
     print("""###################################################""")
-    left_space = " "*7  # Definir la distance entre l'index des lignes et le tableau
+    left_space = " "*7  # Définir la distance entre l'index des lignes et le tableau
     print(left_space, end="")  # Afficher cette distance
     for index in range(len(g[0])):  # Pour chaque colonne, afficher l'index
         print("<", index, ">", end="")
@@ -58,8 +58,8 @@ def afficher(g):
                 symbole = Fore.YELLOW + "●"
             print(Fore.BLACK + "|", symbole, Fore.BLACK +
                   "|", end="")  # Aficher la valeur de la case
-        print("\n", end="")  # Revenir a la ligne a chaque ligne
-        # Definir et afficher la distance entre l'index des lignes et le tableau
+        print("\n", end="")  # Revenir à la ligne au niveau de chaque ligne
+        # Définir et afficher la distance entre l'index des lignes et le tableau
         print(left_space, end="")
         # Afficher une droite qui sépare les lignes
         print(Fore.BLACK + "-"*5*len(g[0]))
@@ -87,7 +87,7 @@ def coup_possible(c, g):
 
 
 def jouer(g, j, c):
-    # Definir par defaut la derniere ligne (au cas ou la colonne serait vide)
+    # Définir par défaut la derniere ligne (au cas ou la colonne serait vide)
     a = len(g)-1
     for ligne in range(len(g)):  # regarder dans chacunes des lignes
         if g[ligne][c] != 0:  # verifier que la case est vide ou non
@@ -143,7 +143,7 @@ def partie_nulle(g):
 def horiz(g, j, l, c):
     aux = 0
     for coef in [1, -1]:  # Dans un sens puis dans l'autre
-        for i in range(1, 4, 1):  # Vérifier 3 fois (pour avoir une ligne de 4 (3+1)
+        for i in range(1, 4, 1):  # Vérifier 3 fois (pour avoir une ligne de 4 (3+1))
             # Vérifier si la ligne se trouve dans la grille
             if c+i*coef <= len(g[0])-1 and c+i*coef >= 0:
                 if g[l][c+i*coef] == j:  # Vérifier si la case est égale au joueur
